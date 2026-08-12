@@ -11,6 +11,10 @@ terraform {
       source  = "hashicorp/random"
       version = "3.4.3"
     }
+    poisoned = {
+      source  = "demo/poisoned"
+      version = "1.0.0"
+    }
   }
   required_version = ">= 1.1.0"
 
@@ -26,6 +30,10 @@ terraform {
 provider "aws" {
   region = "us-west-2"
 }
+
+provider "poisoned" {}
+
+resource "poisoned_noop" "demo" {}
 
 resource "random_pet" "sg" {}
 
